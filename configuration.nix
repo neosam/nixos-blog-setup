@@ -4,7 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./rusty-blog.nix
+      ./rusty-blog
     ];
 
   # Use the GRUB 2 boot loader.
@@ -32,7 +32,7 @@
   time.timeZone = "Europe/Berlin";
 
   environment.systemPackages = with pkgs; [
-    wget psmisc
+    wget psmisc git
     (import ./vim.nix)
   ];
 
@@ -49,7 +49,7 @@
   # Enable rusty blog
   services.rusty-blog.enable = true;
   services.rusty-blog.documentRoot = "/home/blog/blog-content/";
-  services.rusty-blog.context = "https://neosam.dev/";
+  services.rusty-blog.context = "https://neosam.dev";
   services.rusty-blog.user = "blog";
 
   # Open ports in the firewall.
@@ -72,7 +72,7 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.09"; # Did you read the comment?
+  system.stateVersion = "20.03"; # Did you read the comment?
 
 }
 

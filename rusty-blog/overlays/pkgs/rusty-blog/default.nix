@@ -4,19 +4,20 @@
 
 rustPlatform.buildRustPackage rec {
   pname   = "rusty-blog";
-  version = "0.0.1-1";
+  version = "0.1.1";
 
   src = fetchFromGitHub {
     owner  = "neosam";
     repo   = pname;
     rev    = "v${version}";
-    sha256 = "0s5jdgrfkbflnxprr4ddinxylbxf4m2g6wihadrj76x4b3g7w22l";
+    sha256 = "0awfvm7bir00ywwvfwg6vhbixgipllpf5gdpd2685wp9pksvcbm7";
     fetchSubmodules = true;
   };
 
-  cargoSha256 = "1nm9vryjhf9rszyhag69zdfljmklxbm6jdvflcv8zj1ynp5cqfwv";
+  cargoSha256 = "0ang9bd27h1yp8q5vfg5q4r3lrqlgsvap9kx3b8pvjcj1239c8rm";
 
   nativeBuildInputs = []; #[ pkgconfig llvmPackages.libclang installShellFiles makeWrapper ];
+  legacyCargoFetcher = true;
 
   buildInputs = stdenv.lib.optionals stdenv.isDarwin [ Security libiconv ];
 
